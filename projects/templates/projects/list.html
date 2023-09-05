@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <main>
+        <div>
+            {% if project_list %}
+            <h1>My Projects</h1>
+            <table>
+                <thead>
+                    <th>Name</th>
+                    <th>Number of tasks</th>
+                </thead>
+                <tbody>
+                    {% for list in project_list %}
+                    <tr>
+                        <td>{{list.name}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <h1>My Projects</h1>
+            <p>You are not assigned to any projects</p>
+            {% endif %}
+        </div>
+    </main>
+</body>
+
+</html>
