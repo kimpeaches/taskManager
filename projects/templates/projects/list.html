@@ -1,33 +1,35 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-<body>
-    <main>
-        <div>
-            <p><a href="{% url 'create_project' %}">Create a new project</a></p>
-            {% if projects %}
-            <h1>My Projects</h1>
-            <table>
-                <thead>
-                    <th>Name</th>
-                    <th>Number of tasks</th>
-                </thead>
-                <tbody>
-                    {% for projects in projects %}
-                    <tr>
-                        <td><a href="{% url 'show_project' projects.id %}">{{projects.name}}</a></td>
-                        <td>{{projects.tasks.all.count}}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-            {% else %}
-            <h1>My Projects</h1>
-            <p>You are not assigned to any projects</p>
-            {% endif %}
-        </div>
-    </main>
-</body>
-
+    <body>
+        <main>
+            <div>
+                <p>
+                    <a href="{% url 'create_project' %}">Create a new project</a>
+                </p>
+                {% if projects %}
+                    <h1>My Projects</h1>
+                    <table>
+                        <thead>
+                            <th>Name</th>
+                            <th>Number of tasks</th>
+                        </thead>
+                        <tbody>
+                            {% for projects in projects %}
+                                <tr>
+                                    <td>
+                                        <a href="{% url 'show_project' projects.id %}">{{ projects.name }}</a>
+                                    </td>
+                                    <td>{{ projects.tasks.all.count }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    <h1>My Projects</h1>
+                    <p>You are not assigned to any projects</p>
+                {% endif %}
+            </div>
+        </main>
+    </body>
 {% endblock content %}
